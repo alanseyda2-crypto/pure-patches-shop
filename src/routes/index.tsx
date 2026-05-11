@@ -21,6 +21,7 @@ const marqueeItems = ["Hydrokolloid", "Vegan", "Dermatologisch entwickelt", "Mad
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-[var(--lilac)] selection:text-[var(--ink)]">
+      <AnnouncementBar />
       <Nav />
       <Hero />
       <Marquee />
@@ -32,6 +33,25 @@ function Index() {
       <Faq />
       <Cta />
       <Footer />
+    </div>
+  );
+}
+
+function AnnouncementBar() {
+  const items = [
+    "✺  Versandkostenfrei ab 15 €",
+    "✺  Versand binnen 24 h aus Deutschland",
+    "✺  30 Tage Geld-zurück-Garantie",
+    "✺  Über 2.300 verifizierte 5★ Bewertungen",
+  ];
+  const loop = [...items, ...items];
+  return (
+    <div className="bg-[var(--ink)] text-background overflow-hidden py-2.5 text-xs uppercase tracking-[0.18em]">
+      <div className="flex gap-12 whitespace-nowrap animate-marquee">
+        {loop.map((t, i) => (
+          <span key={i} className="shrink-0">{t}</span>
+        ))}
+      </div>
     </div>
   );
 }
