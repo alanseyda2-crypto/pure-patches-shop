@@ -263,36 +263,187 @@ function Product() {
   );
 }
 
+type Review = {
+  name: string;
+  initials: string;
+  hue: number;
+  age: string;
+  skin: string;
+  rating: number;
+  date: string; // ISO
+  helpful: number;
+  title: string;
+  text: string;
+  verified: boolean;
+};
+
+const REVIEWS: Review[] = [
+  { name: "Lena Krüger", initials: "LK", hue: 305, age: "24", skin: "Mischhaut", rating: 5, date: "2026-04-22", helpful: 142, title: "Über Nacht weggezaubert", text: "Habe vor dem Schlafen einen Patch draufgemacht — morgens war der Pickel komplett weg. Absolut beeindruckend, das wird mein neuer Standard.", verified: true },
+  { name: "Max Reiter", initials: "MR", hue: 200, age: "29", skin: "Sensibel", rating: 5, date: "2026-04-15", helpful: 98, title: "Endlich keine Narben mehr", text: "Habe früher immer gedrückt — und Narben gehabt. Mit den Patches ist das vorbei. Trage sie auch tagsüber, sieht wirklich niemand.", verified: true },
+  { name: "Sophia Bauer", initials: "SB", hue: 330, age: "31", skin: "Fettig", rating: 5, date: "2026-04-10", helpful: 87, title: "Die 3 Größen sind perfekt", text: "Der 12mm rettet mich bei den großen Entzündungen am Kinn. Kleine Patches für die Stirn. Durchdacht und wirklich effektiv.", verified: true },
+  { name: "Jonas Weber", initials: "JW", hue: 270, age: "22", skin: "Akne-neigend", rating: 4, date: "2026-03-28", helpful: 64, title: "Funktioniert sehr gut", text: "Bei oberflächlichen Pickeln top. Bei tiefliegenden brauchts manchmal 2 Nächte. Trotzdem klare Empfehlung.", verified: true },
+  { name: "Aisha Demir", initials: "AD", hue: 250, age: "27", skin: "Normal", rating: 5, date: "2026-03-19", helpful: 121, title: "Mein Lifesaver vor Events", text: "Hochzeit am Wochenende, Pickel am Donnerstag. Patch drauf — am Samstag perfekte Haut. Hat mich gerettet.", verified: true },
+  { name: "Felix Hartmann", initials: "FH", hue: 220, age: "35", skin: "Trocken", rating: 4, date: "2026-03-05", helpful: 41, title: "Solide & dezent", text: "Ultradünn, fällt selbst aus der Nähe kaum auf. Kleben hält die ganze Nacht. Preis-Leistung sehr fair.", verified: true },
+];
+
+const DISTRIBUTION = [
+  { stars: 5, count: 2104 },
+  { stars: 4, count: 187 },
+  { stars: 3, count: 32 },
+  { stars: 2, count: 11 },
+  { stars: 1, count: 7 },
+];
+
+function Stars({ value, size = 14 }: { value: number; size?: number }) {
+  return (
+    <div className="inline-flex gap-0.5" aria-label={`${value} von 5 Sternen`}>
+      {[1, 2, 3, 4, 5].map(i => (
+        <svg key={i} width={size} height={size} viewBox="0 0 24 24" fill={i <= value ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5" className={i <= value ? "text-[var(--primary)]" : "text-foreground/20"}>
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function Avatar({ initials, hue }: { initials: string; hue: number }) {
+  return (
+    <div
+      className="w-11 h-11 rounded-full flex items-center justify-center font-display text-sm text-white shrink-0 ring-1 ring-foreground/10"
+      style={{ background: `linear-gradient(135deg, oklch(0.7 0.13 ${hue}), oklch(0.5 0.16 ${hue + 30}))` }}
+    >
+      {initials}
+    </div>
+  );
+}
+
 function Reviews() {
-  const items = [
-    { name: "Lena K.", role: "verifizierter Kauf", text: "Habe vor dem Schlafen einen Patch draufgemacht — morgens war der Pickel komplett weg. Wahnsinn." },
-    { name: "Max R.", role: "verifizierter Kauf", text: "Endlich keine Narben mehr vom Drücken. Trage sie auch tagsüber, sieht keiner." },
-    { name: "Sophia B.", role: "verifizierter Kauf", text: "Drei Größen sind perfekt. Der 12mm rettet mich bei den großen Entzündungen." },
-  ];
+  const [sort, setSort] = useState<"helpful" | "recent" | "highest" | "lowest">("helpful");
+  const [filter, setFilter] = useState<number | null>(null);
+
+  const total = DISTRIBUTION.reduce((s, d) => s + d.count, 0);
+  const avg = (DISTRIBUTION.reduce((s, d) => s + d.stars * d.count, 0) / total).toFixed(1);
+
+  const filtered = REVIEWS.filter(r => filter === null || r.rating === filter);
+  const sorted = [...filtered].sort((a, b) => {
+    if (sort === "helpful") return b.helpful - a.helpful;
+    if (sort === "recent") return b.date.localeCompare(a.date);
+    if (sort === "highest") return b.rating - a.rating;
+    return a.rating - b.rating;
+  });
+
+  const sortLabels: Record<typeof sort, string> = {
+    helpful: "Hilfreichste",
+    recent: "Neueste",
+    highest: "Höchste Bewertung",
+    lowest: "Niedrigste Bewertung",
+  };
+
   return (
     <section className="border-t border-border bg-[var(--cream)]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24">
-        <div className="flex items-end justify-between mb-12">
-          <h2 className="font-display text-4xl md:text-5xl tracking-[-0.02em]">
-            <em className="text-[var(--primary)]">2.341</em> reine Gesichter.
-          </h2>
-          <div className="text-sm">★★★★★ <span className="text-muted-foreground ml-2">4,9 / 5</span></div>
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
+        <div className="flex items-end justify-between gap-6 mb-12">
+          <div>
+            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">— Kundenstimmen</div>
+            <h2 className="mt-4 font-display text-5xl md:text-6xl tracking-[-0.03em] leading-none">
+              <em className="text-[var(--primary)]">2.341</em><br />reine Gesichter.
+            </h2>
+          </div>
+          <div className="hidden md:block text-xs uppercase tracking-[0.2em] text-muted-foreground">Verifiziert via Trusted Shops</div>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {items.map(r => (
-            <figure key={r.name} className="bg-background p-8 border border-border">
-              <blockquote className="font-display text-xl leading-snug">„{r.text}"</blockquote>
-              <figcaption className="mt-6 text-sm">
-                <div className="font-medium">{r.name}</div>
-                <div className="text-muted-foreground text-xs">{r.role}</div>
-              </figcaption>
-            </figure>
+
+        {/* Summary card */}
+        <div className="grid lg:grid-cols-12 gap-8 bg-background border border-border p-8 lg:p-10">
+          <div className="lg:col-span-3 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-border pb-8 lg:pb-0 lg:pr-8">
+            <div className="font-display text-7xl leading-none">{avg.replace(".", ",")}</div>
+            <div className="mt-3"><Stars value={Math.round(parseFloat(avg))} size={18} /></div>
+            <div className="mt-3 text-sm text-muted-foreground">basierend auf {total.toLocaleString("de-DE")} Bewertungen</div>
+          </div>
+          <div className="lg:col-span-5 space-y-2">
+            {DISTRIBUTION.map(d => {
+              const pct = (d.count / total) * 100;
+              const active = filter === d.stars;
+              return (
+                <button
+                  key={d.stars}
+                  onClick={() => setFilter(active ? null : d.stars)}
+                  className={`w-full grid grid-cols-[auto_1fr_auto] gap-4 items-center text-sm group ${active ? "opacity-100" : "opacity-90 hover:opacity-100"}`}
+                >
+                  <span className="font-display tabular-nums w-10 text-left">{d.stars} ★</span>
+                  <span className="h-2 bg-secondary relative overflow-hidden">
+                    <span className="absolute inset-y-0 left-0 transition-all" style={{ width: `${pct}%`, background: active ? "var(--primary)" : "var(--lilac)" }} />
+                  </span>
+                  <span className="tabular-nums text-muted-foreground w-14 text-right">{d.count.toLocaleString("de-DE")}</span>
+                </button>
+              );
+            })}
+            {filter !== null && (
+              <button onClick={() => setFilter(null)} className="text-xs text-[var(--primary)] underline mt-2">Filter zurücksetzen</button>
+            )}
+          </div>
+          <div className="lg:col-span-4 flex flex-col justify-center gap-3 lg:border-l border-border lg:pl-8">
+            <div className="flex items-center justify-between text-sm"><span className="text-muted-foreground">Würden wieder kaufen</span><span className="font-display text-lg">96 %</span></div>
+            <div className="flex items-center justify-between text-sm"><span className="text-muted-foreground">Sichtbares Ergebnis</span><span className="font-display text-lg">über Nacht</span></div>
+            <div className="flex items-center justify-between text-sm"><span className="text-muted-foreground">Hautverträglichkeit</span><span className="font-display text-lg">4,9 / 5</span></div>
+          </div>
+        </div>
+
+        {/* Sort bar */}
+        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-b border-border pb-4">
+          <div className="text-sm text-muted-foreground">{sorted.length} {sorted.length === 1 ? "Bewertung" : "Bewertungen"}{filter !== null && ` mit ${filter} ★`}</div>
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-muted-foreground">Sortieren:</span>
+            <div className="flex border border-border">
+              {(Object.keys(sortLabels) as (keyof typeof sortLabels)[]).map(k => (
+                <button
+                  key={k}
+                  onClick={() => setSort(k)}
+                  className={`px-3 py-1.5 text-xs transition ${sort === k ? "bg-foreground text-background" : "hover:bg-secondary"}`}
+                >
+                  {sortLabels[k]}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Review list */}
+        <div className="mt-2 grid md:grid-cols-2 gap-px bg-border">
+          {sorted.map(r => (
+            <article key={r.name} className="bg-background p-8 flex flex-col">
+              <header className="flex items-start gap-4">
+                <Avatar initials={r.initials} hue={r.hue} />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-medium">{r.name}</span>
+                    {r.verified && (
+                      <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider text-[var(--primary)] bg-[var(--lilac-soft)] px-1.5 py-0.5">
+                        <Check className="w-3 h-3" /> Verifiziert
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-0.5">{r.age} J. · {r.skin} · {new Date(r.date).toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric" })}</div>
+                </div>
+                <Stars value={r.rating} />
+              </header>
+              <h4 className="mt-5 font-display text-xl leading-tight">„{r.title}"</h4>
+              <p className="mt-3 text-foreground/75 leading-relaxed text-sm flex-1">{r.text}</p>
+              <footer className="mt-6 pt-4 border-t border-border flex items-center justify-between text-xs text-muted-foreground">
+                <span>{r.helpful} fanden das hilfreich</span>
+                <button className="hover:text-foreground transition">Hilfreich ↑</button>
+              </footer>
+            </article>
           ))}
         </div>
+
+        {sorted.length === 0 && (
+          <div className="text-center py-16 text-muted-foreground">Keine Bewertungen mit diesem Filter.</div>
+        )}
       </div>
     </section>
   );
 }
+
 
 function Faq() {
   const items = [
