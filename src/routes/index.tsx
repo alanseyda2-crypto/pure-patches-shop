@@ -518,23 +518,46 @@ function Cta() {
 }
 
 function Footer() {
+  const legal = [
+    { to: "/impressum", label: "Impressum" },
+    { to: "/agb", label: "AGB" },
+    { to: "/datenschutz", label: "Datenschutz" },
+    { to: "/widerruf", label: "Widerruf" },
+    { to: "/versand", label: "Versand & Zahlung" },
+  ] as const;
   return (
     <footer className="border-t border-border">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-12 grid md:grid-cols-3 gap-8 text-sm">
-        <div>
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 grid md:grid-cols-4 gap-10 text-sm">
+        <div className="md:col-span-2">
           <div className="font-display text-2xl italic">pure·patches</div>
           <p className="mt-3 text-muted-foreground max-w-xs">Hydrokolloid-Pflege aus Kerpen, Deutschland.</p>
+          <div className="mt-6 text-muted-foreground space-y-1">
+            <div>Ilmmion Technologies GmbH</div>
+            <div>Am Gewerbehof 7–9, 50170 Kerpen</div>
+            <div>hello@purepatches.de</div>
+          </div>
         </div>
-        <div className="text-muted-foreground space-y-2">
-          <div>Ilmmion Technologies GmbH</div>
-          <div>Am Gewerbehof 7–9</div>
-          <div>50170 Kerpen, Deutschland</div>
+        <div>
+          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Rechtliches</div>
+          <ul className="space-y-2">
+            {legal.map(l => (
+              <li key={l.to}>
+                <Link to={l.to} className="text-foreground/80 hover:text-[var(--primary)] transition">{l.label}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="md:text-right text-muted-foreground space-y-2">
-          <div>hello@purepatches.de</div>
-          <div>www.purepatches.de</div>
-          <div className="pt-4 text-xs">© {new Date().getFullYear()} — Alle Rechte vorbehalten</div>
+        <div>
+          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Shop</div>
+          <ul className="space-y-2">
+            <li><a href="/#produkt" className="text-foreground/80 hover:text-[var(--primary)] transition">Produkt</a></li>
+            <li><a href="/#wissenschaft" className="text-foreground/80 hover:text-[var(--primary)] transition">Wissenschaft</a></li>
+            <li><a href="/#faq" className="text-foreground/80 hover:text-[var(--primary)] transition">FAQ</a></li>
+          </ul>
         </div>
+      </div>
+      <div className="border-t border-border py-6 text-center text-xs text-muted-foreground">
+        © {new Date().getFullYear()} Pure Patches — Alle Rechte vorbehalten
       </div>
     </footer>
   );
