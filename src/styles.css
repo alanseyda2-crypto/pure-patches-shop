@@ -1,8 +1,14 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Inter:wght@300..700&display=swap");
 
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
 
 /*
  * Design system definition.
@@ -62,32 +68,32 @@
 }
 
 :root {
-  --radius: 1rem;
-  --background: oklch(0.985 0.012 310);
-  --foreground: oklch(0.22 0.05 295);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.55 0.18 300);
-  --primary-foreground: oklch(0.99 0.005 300);
-  --primary-glow: oklch(0.78 0.12 320);
-  --secondary: oklch(0.94 0.04 310);
-  --secondary-foreground: oklch(0.3 0.08 295);
-  --muted: oklch(0.95 0.02 310);
-  --muted-foreground: oklch(0.5 0.05 295);
-  --accent: oklch(0.85 0.1 200);
-  --accent-foreground: oklch(0.22 0.05 295);
-  --gradient-hero: linear-gradient(135deg, oklch(0.92 0.08 310) 0%, oklch(0.88 0.1 280) 40%, oklch(0.9 0.09 200) 100%);
-  --gradient-primary: linear-gradient(135deg, oklch(0.6 0.2 300), oklch(0.78 0.14 330));
-  --gradient-soft: linear-gradient(180deg, oklch(0.985 0.012 310), oklch(0.94 0.05 310));
-  --shadow-elegant: 0 20px 60px -20px oklch(0.55 0.18 300 / 0.35);
-  --shadow-glow: 0 0 80px oklch(0.78 0.14 330 / 0.4);
+  --radius: 0.25rem;
+  --background: oklch(0.97 0.008 90);
+  --foreground: oklch(0.18 0.02 295);
+  --card: oklch(0.99 0.005 90);
+  --card-foreground: oklch(0.18 0.02 295);
+  --popover: oklch(0.99 0.005 90);
+  --popover-foreground: oklch(0.18 0.02 295);
+  --primary: oklch(0.42 0.12 295);
+  --primary-foreground: oklch(0.97 0.008 90);
+  --primary-glow: oklch(0.72 0.14 320);
+  --lilac: oklch(0.82 0.08 305);
+  --lilac-soft: oklch(0.92 0.04 305);
+  --cream: oklch(0.95 0.02 85);
+  --ink: oklch(0.18 0.02 295);
+  --secondary: oklch(0.92 0.03 305);
+  --secondary-foreground: oklch(0.25 0.04 295);
+  --muted: oklch(0.94 0.015 90);
+  --muted-foreground: oklch(0.45 0.03 295);
+  --accent: oklch(0.85 0.09 305);
+  --accent-foreground: oklch(0.18 0.02 295);
+  --shadow-soft: 0 30px 80px -30px oklch(0.42 0.12 295 / 0.25);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.88 0.02 305);
+  --input: oklch(0.88 0.02 305);
+  --ring: oklch(0.42 0.12 295);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -146,5 +152,28 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
   }
+
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--r, 0deg)); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
