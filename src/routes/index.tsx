@@ -88,7 +88,7 @@ function Hero() {
           </p>
           <div className="mt-10 flex items-center gap-6">
             <Button asChild size="lg" className="rounded-none h-14 px-8 bg-foreground text-background hover:bg-[var(--primary)] font-medium tracking-wide">
-              <a href="#produkt">Jetzt bestellen — 12,90 €</a>
+              <a href="#produkt">Jetzt bestellen — ab 5,00 €</a>
             </Button>
             <a href="#wissenschaft" className="text-sm border-b border-foreground/30 pb-0.5 hover:border-foreground">So wirkt es ↓</a>
           </div>
@@ -217,7 +217,13 @@ function Ritual() {
 }
 
 function Product() {
-  const [qty, setQty] = useState(1);
+  const tiers = [
+    { packs: 1, price: 5.0, label: "1 Pack", note: "Probieren", per: 5.0 },
+    { packs: 3, price: 10.0, label: "3 Packs", note: "Beliebt · spare 33%", per: 10 / 3, popular: true },
+    { packs: 6, price: 12.5, label: "6 Packs", note: "Bester Preis · spare 58%", per: 12.5 / 6 },
+  ];
+  const [tierIdx, setTierIdx] = useState(1);
+  const tier = tiers[tierIdx];
   return (
     <section id="produkt" className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
@@ -237,18 +243,40 @@ function Product() {
             Pure<br /><em className="text-[var(--primary)]">Patches.</em>
           </h2>
           <p className="mt-6 text-foreground/70 max-w-md leading-relaxed">
-            36 Hydrokolloid-Patches in drei Größen. Ein Beutel reicht für rund einen Monat ruhige Haut.
+            36 Hydrokolloid-Patches pro Pack in drei Größen. Wähle dein Bundle — je mehr, desto günstiger.
           </p>
 
-          <div className="mt-10 flex items-baseline gap-4">
-            <span className="font-display text-5xl">12,90 €</span>
-            <span className="text-muted-foreground line-through">16,90 €</span>
-            <span className="text-xs uppercase tracking-widest text-[var(--primary)]">−24%</span>
+          <div className="mt-10 space-y-3">
+            {tiers.map((t, i) => {
+              const active = i === tierIdx;
+              return (
+                <button
+                  key={t.packs}
+                  onClick={() => setTierIdx(i)}
+                  className={`w-full flex items-center justify-between px-5 py-4 border text-left transition-colors ${active ? "border-foreground bg-[var(--lilac-soft)]" : "border-border hover:border-foreground/40"}`}
+                >
+                  <div className="flex items-center gap-4">
+                    <span className={`w-4 h-4 rounded-full border ${active ? "border-foreground bg-foreground" : "border-foreground/40"}`} />
+                    <div>
+                      <div className="font-display text-lg flex items-center gap-2">
+                        {t.label}
+                        {t.popular && <span className="text-[10px] uppercase tracking-widest bg-foreground text-background px-2 py-0.5">Top</span>}
+                      </div>
+                      <div className="text-xs text-muted-foreground">{t.note}</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-display text-xl">{t.price.toFixed(2).replace(".", ",")} €</div>
+                    <div className="text-xs text-muted-foreground">{t.per.toFixed(2).replace(".", ",")} € / Pack</div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
 
           <ul className="mt-8 space-y-3 text-sm">
             {[
-              "12× 8 mm · 12× 10 mm · 12× 12 mm",
+              "12× 8 mm · 12× 10 mm · 12× 12 mm pro Pack",
               "Vegan & dermatologisch getestet",
               "Unsichtbar — auch tagsüber tragbar",
               "Versandkostenfrei in Deutschland",
@@ -257,18 +285,11 @@ function Product() {
             ))}
           </ul>
 
-          <div className="mt-10 flex items-stretch gap-3">
-            <div className="flex items-center border border-border">
-              <button onClick={() => setQty(Math.max(1, qty - 1))} className="w-12 h-14 flex items-center justify-center hover:bg-secondary"><Minus className="w-4 h-4" /></button>
-              <span className="w-12 text-center font-display text-lg">{qty}</span>
-              <button onClick={() => setQty(qty + 1)} className="w-12 h-14 flex items-center justify-center hover:bg-secondary"><Plus className="w-4 h-4" /></button>
-            </div>
-            <Button size="lg" className="flex-1 rounded-none h-14 bg-foreground text-background hover:bg-[var(--primary)] font-medium tracking-wide">
-              In den Warenkorb · {(12.9 * qty).toFixed(2).replace(".", ",")} €
+          <div className="mt-10">
+            <Button size="lg" className="w-full rounded-none h-14 bg-foreground text-background hover:bg-[var(--primary)] font-medium tracking-wide">
+              In den Warenkorb · {tier.price.toFixed(2).replace(".", ",")} €
             </Button>
           </div>
-
-          
         </div>
       </div>
     </section>
