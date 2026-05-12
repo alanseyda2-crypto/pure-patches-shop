@@ -12,7 +12,7 @@ export const Route = createFileRoute("/datenschutz")({
     <LegalLayout title="Datenschutzerklärung" updated="Mai 2026">
       <H2>1. Verantwortlicher</H2>
       <p>
-        Ilmmion Technologies GmbH, Am Gewerbehof 7–9, 50170 Kerpen, Deutschland. E-Mail: hello@purepatches.de.
+        Ilmmion Technologies GmbH, Am Gewerbehof 7–9, 50170 Kerpen, Deutschland. E-Mail: info@purepatches.de.
       </p>
 
       <H2>2. Erhebung und Speicherung personenbezogener Daten</H2>

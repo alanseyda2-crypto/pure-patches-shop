@@ -15,7 +15,7 @@ export const Route = createFileRoute("/widerruf")({
         Sie haben das Recht, binnen 14 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt 14 Tage ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, der nicht der Beförderer ist, die Waren in Besitz genommen haben bzw. hat.
       </p>
       <p>
-        Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Ilmmion Technologies GmbH, Am Gewerbehof 7–9, 50170 Kerpen, hello@purepatches.de) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren.
+        Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (Ilmmion Technologies GmbH, Am Gewerbehof 7–9, 50170 Kerpen, info@purepatches.de) mittels einer eindeutigen Erklärung (z. B. ein mit der Post versandter Brief oder E-Mail) über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren.
       </p>
 
       <H2>Folgen des Widerrufs</H2>
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/widerruf")({
 
       <H2>Muster-Widerrufsformular</H2>
       <p>
-        An: Ilmmion Technologies GmbH, Am Gewerbehof 7–9, 50170 Kerpen, hello@purepatches.de.<br />
+        An: Ilmmion Technologies GmbH, Am Gewerbehof 7–9, 50170 Kerpen, info@purepatches.de.<br />
         Hiermit widerrufe(n) ich/wir den von mir/uns abgeschlossenen Vertrag über den Kauf der folgenden Waren:<br />
         Bestellt am ___ / erhalten am ___<br />
         Name des/der Verbraucher(s), Anschrift, Datum, Unterschrift (nur bei Mitteilung auf Papier).

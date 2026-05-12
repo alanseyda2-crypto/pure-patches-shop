@@ -20,7 +20,7 @@ export const Route = createFileRoute("/impressum")({
       <H2>Kontakt</H2>
       <p>
         Telefon: +49 (0) 22 73 / 000 000<br />
-        E-Mail: hello@purepatches.de<br />
+        E-Mail: info@purepatches.de<br />
         Web: www.purepatches.de
       </p>
 
