@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowUpRight, Check, Plus, Minus } from "lucide-react";
+import { ArrowUpRight, Check, Plus, Minus, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import packFront from "@/assets/pack-front.jpeg";
-import packBack from "@/assets/pack-back.jpeg";
-import patchesSheet from "@/assets/patches-sheet.jpeg";
+import packFront from "@/assets/pack-front.png";
+import patchesSheet from "@/assets/patches-sheet.png";
+import lifestyleSkin from "@/assets/lifestyle-skin.png";
+import lifestyleGlow from "@/assets/lifestyle-glow.png";
+import handPatch from "@/assets/hand-patch.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -38,21 +40,13 @@ function Index() {
 }
 
 function AnnouncementBar() {
-  const items = [
-    "✺  Versandkostenfrei ab 15 €",
-    "✺  Versand binnen 24 h aus Deutschland",
-    "✺  30 Tage Geld-zurück-Garantie",
-    "✺  Über 2.300 verifizierte 5★ Bewertungen",
-  ];
-  const loop = [...items, ...items];
   return (
-    <div className="bg-[var(--ink)] text-background overflow-hidden py-2.5 text-xs uppercase tracking-[0.18em]">
-      <div className="flex gap-12 whitespace-nowrap animate-marquee">
-        {loop.map((t, i) => (
-          <span key={i} className="shrink-0">{t}</span>
-        ))}
-      </div>
-    </div>
+    <a
+      href="#produkt"
+      className="block bg-[var(--ink)] text-background py-2.5 text-center text-xs uppercase tracking-[0.18em] hover:bg-[var(--primary)] transition-colors"
+    >
+      Versandkostenfrei in Deutschland <span className="text-[var(--lilac)] mx-2">·</span> 36 Patches pro Pack <span className="text-[var(--lilac)] mx-2">·</span> 3 Größen
+    </a>
   );
 }
 
@@ -60,17 +54,15 @@ function Nav() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/60">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-        <a href="#top" className="font-display text-2xl tracking-tight italic">
-          pure<span className="text-[var(--primary)]">·</span>patches
+        <a href="#top" className="font-display font-black text-[25px] tracking-[-0.02em] leading-none">
+          pure<span className="text-[var(--primary)]">patches</span>
         </a>
-        <nav className="hidden md:flex gap-10 text-sm">
-          <a href="#wissenschaft" className="hover:text-[var(--primary)] transition">Wissenschaft</a>
-          <a href="#ritual" className="hover:text-[var(--primary)] transition">Ritual</a>
-          <a href="#produkt" className="hover:text-[var(--primary)] transition">Produkt</a>
-          <a href="#faq" className="hover:text-[var(--primary)] transition">FAQ</a>
-        </nav>
-        <a href="#produkt" className="group inline-flex items-center gap-1 text-sm font-medium border-b border-foreground/30 pb-0.5 hover:border-foreground transition">
-          Bestellen <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
+        <a
+          href="#produkt"
+          aria-label="Zum Warenkorb"
+          className="relative inline-flex items-center justify-center w-11 h-11 rounded-full border border-border hover:bg-[var(--lilac-soft)] hover:border-[var(--primary)] transition"
+        >
+          <ShoppingBag className="w-5 h-5" />
         </a>
       </div>
     </header>
@@ -192,8 +184,8 @@ function Ritual() {
     <section id="ritual" className="bg-[var(--ink)] text-background">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-2 gap-16 items-center">
         <div className="relative aspect-[4/5] overflow-hidden">
-          <img src={patchesSheet} alt="Patches Sheet" className="w-full h-full object-cover" />
-          <div className="absolute bottom-6 left-6 right-6 flex justify-between text-xs uppercase tracking-[0.2em] text-background/70">
+          <img src={lifestyleSkin} alt="Reine Haut nach Anwendung" className="w-full h-full object-cover" />
+          <div className="absolute bottom-6 left-6 right-6 flex justify-between text-xs uppercase tracking-[0.2em] text-background/90">
             <span>8mm · 10mm · 12mm</span>
             <span>36 pcs</span>
           </div>
@@ -234,8 +226,8 @@ function Product() {
             <img src={packFront} alt="Pure Patches" className="w-full h-full object-cover" />
           </div>
           <div className="grid grid-cols-2 gap-3 mt-3">
-            <img src={packBack} alt="Rückseite" className="aspect-square object-cover bg-[var(--cream)]" />
-            <img src={patchesSheet} alt="Patches" className="aspect-square object-cover bg-[var(--cream)]" />
+            <img src={patchesSheet} alt="36 Patches in 3 Größen" className="aspect-square object-cover bg-[var(--cream)]" />
+            <img src={handPatch} alt="Patch auf der Haut" className="aspect-square object-cover bg-[var(--cream)]" />
           </div>
         </div>
 
@@ -259,7 +251,7 @@ function Product() {
               "12× 8 mm · 12× 10 mm · 12× 12 mm",
               "Vegan & dermatologisch getestet",
               "Unsichtbar — auch tagsüber tragbar",
-              "Versandkostenfrei ab 25 €",
+              "Versandkostenfrei in Deutschland",
             ].map(t => (
               <li key={t} className="flex gap-3 items-center"><Check className="w-4 h-4 text-[var(--primary)]" />{t}</li>
             ))}
@@ -276,7 +268,7 @@ function Product() {
             </Button>
           </div>
 
-          <p className="mt-4 text-xs text-muted-foreground">Versand binnen 24 h aus Kerpen, Deutschland.</p>
+          
         </div>
       </div>
     </section>
@@ -503,6 +495,8 @@ function Cta() {
   return (
     <section className="px-6 lg:px-10 pb-10">
       <div className="max-w-[1400px] mx-auto bg-[var(--ink)] text-background relative overflow-hidden">
+        <img src={lifestyleGlow} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/85 to-transparent" />
         <div className="px-8 lg:px-20 py-24 lg:py-32 text-center relative">
           <div className="text-xs uppercase tracking-[0.2em] text-background/60">— Edition Nº 01</div>
           <h2 className="mt-6 font-display text-6xl md:text-8xl lg:text-9xl tracking-[-0.04em] leading-[0.9]">
@@ -529,13 +523,20 @@ function Footer() {
     <footer className="border-t border-border">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 grid md:grid-cols-4 gap-10 text-sm">
         <div className="md:col-span-2">
-          <div className="font-display text-2xl italic">pure·patches</div>
-          <p className="mt-3 text-muted-foreground max-w-xs">Hydrokolloid-Pflege aus Kerpen, Deutschland.</p>
+          <div className="font-display font-black text-[25px] tracking-[-0.02em]">
+            pure<span className="text-[var(--primary)]">patches</span>
+          </div>
           <div className="mt-6 text-muted-foreground space-y-1">
             <div>Ilmmion Technologies GmbH</div>
             <div>Am Gewerbehof 7–9, 50170 Kerpen</div>
-            <div>hello@purepatches.de</div>
+            <div>info@purepatches.de</div>
           </div>
+        </div>
+        <div>
+          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Shop</div>
+          <ul className="space-y-2">
+            <li><a href="/#produkt" className="text-foreground/80 hover:text-[var(--primary)] transition">Shop</a></li>
+          </ul>
         </div>
         <div>
           <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Rechtliches</div>
@@ -545,14 +546,6 @@ function Footer() {
                 <Link to={l.to} className="text-foreground/80 hover:text-[var(--primary)] transition">{l.label}</Link>
               </li>
             ))}
-          </ul>
-        </div>
-        <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Shop</div>
-          <ul className="space-y-2">
-            <li><a href="/#produkt" className="text-foreground/80 hover:text-[var(--primary)] transition">Produkt</a></li>
-            <li><a href="/#wissenschaft" className="text-foreground/80 hover:text-[var(--primary)] transition">Wissenschaft</a></li>
-            <li><a href="/#faq" className="text-foreground/80 hover:text-[var(--primary)] transition">FAQ</a></li>
           </ul>
         </div>
       </div>
