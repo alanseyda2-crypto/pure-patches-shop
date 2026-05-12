@@ -184,8 +184,8 @@ function Ritual() {
     <section id="ritual" className="bg-[var(--ink)] text-background">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-2 gap-16 items-center">
         <div className="relative aspect-[4/5] overflow-hidden">
-          <img src={patchesSheet} alt="Patches Sheet" className="w-full h-full object-cover" />
-          <div className="absolute bottom-6 left-6 right-6 flex justify-between text-xs uppercase tracking-[0.2em] text-background/70">
+          <img src={lifestyleSkin} alt="Reine Haut nach Anwendung" className="w-full h-full object-cover" />
+          <div className="absolute bottom-6 left-6 right-6 flex justify-between text-xs uppercase tracking-[0.2em] text-background/90">
             <span>8mm · 10mm · 12mm</span>
             <span>36 pcs</span>
           </div>
@@ -495,6 +495,8 @@ function Cta() {
   return (
     <section className="px-6 lg:px-10 pb-10">
       <div className="max-w-[1400px] mx-auto bg-[var(--ink)] text-background relative overflow-hidden">
+        <img src={lifestyleGlow} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/85 to-transparent" />
         <div className="px-8 lg:px-20 py-24 lg:py-32 text-center relative">
           <div className="text-xs uppercase tracking-[0.2em] text-background/60">— Edition Nº 01</div>
           <h2 className="mt-6 font-display text-6xl md:text-8xl lg:text-9xl tracking-[-0.04em] leading-[0.9]">
