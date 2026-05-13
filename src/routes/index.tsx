@@ -377,11 +377,11 @@ function Reviews() {
 
   return (
     <section className="border-t border-border bg-[var(--cream)]">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
-        <div className="flex items-end justify-between gap-6 mb-12">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32">
+        <div className="flex items-end justify-between gap-6 mb-8 sm:mb-12">
           <div>
-            <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">— Kundenstimmen</div>
-            <h2 className="mt-4 font-display text-5xl md:text-6xl tracking-[-0.03em] leading-none">
+            <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground">— Kundenstimmen</div>
+            <h2 className="mt-3 sm:mt-4 font-display text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-none">
               <em className="text-[var(--primary)]">2.341</em><br />reine Gesichter.
             </h2>
           </div>
@@ -389,9 +389,9 @@ function Reviews() {
         </div>
 
         {/* Summary card */}
-        <div className="grid lg:grid-cols-12 gap-8 bg-background border border-border p-8 lg:p-10">
-          <div className="lg:col-span-3 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-border pb-8 lg:pb-0 lg:pr-8">
-            <div className="font-display text-7xl leading-none">{avg.replace(".", ",")}</div>
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 bg-background border border-border p-6 sm:p-8 lg:p-10">
+          <div className="lg:col-span-3 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-border pb-6 sm:pb-8 lg:pb-0 lg:pr-8">
+            <div className="font-display text-6xl sm:text-7xl leading-none">{avg.replace(".", ",")}</div>
             <div className="mt-3"><Stars value={Math.round(parseFloat(avg))} size={18} /></div>
             <div className="mt-3 text-sm text-muted-foreground">basierend auf {total.toLocaleString("de-DE")} Bewertungen</div>
           </div>
@@ -403,13 +403,13 @@ function Reviews() {
                 <button
                   key={d.stars}
                   onClick={() => setFilter(active ? null : d.stars)}
-                  className={`w-full grid grid-cols-[auto_1fr_auto] gap-4 items-center text-sm group ${active ? "opacity-100" : "opacity-90 hover:opacity-100"}`}
+                  className={`w-full grid grid-cols-[auto_1fr_auto] gap-3 sm:gap-4 items-center text-sm group ${active ? "opacity-100" : "opacity-90 hover:opacity-100"}`}
                 >
-                  <span className="font-display tabular-nums w-10 text-left">{d.stars} ★</span>
+                  <span className="font-display tabular-nums w-8 sm:w-10 text-left">{d.stars} ★</span>
                   <span className="h-2 bg-secondary relative overflow-hidden">
                     <span className="absolute inset-y-0 left-0 transition-all" style={{ width: `${pct}%`, background: active ? "var(--primary)" : "var(--lilac)" }} />
                   </span>
-                  <span className="tabular-nums text-muted-foreground w-14 text-right">{d.count.toLocaleString("de-DE")}</span>
+                  <span className="tabular-nums text-muted-foreground w-12 sm:w-14 text-right">{d.count.toLocaleString("de-DE")}</span>
                 </button>
               );
             })}
@@ -417,7 +417,7 @@ function Reviews() {
               <button onClick={() => setFilter(null)} className="text-xs text-[var(--primary)] underline mt-2">Filter zurücksetzen</button>
             )}
           </div>
-          <div className="lg:col-span-4 flex flex-col justify-center gap-3 lg:border-l border-border lg:pl-8">
+          <div className="lg:col-span-4 flex flex-col justify-center gap-3 lg:border-l border-border lg:pl-8 border-t lg:border-t-0 pt-6 lg:pt-0">
             <div className="flex items-center justify-between text-sm"><span className="text-muted-foreground">Würden wieder kaufen</span><span className="font-display text-lg">96 %</span></div>
             <div className="flex items-center justify-between text-sm"><span className="text-muted-foreground">Sichtbares Ergebnis</span><span className="font-display text-lg">über Nacht</span></div>
             <div className="flex items-center justify-between text-sm"><span className="text-muted-foreground">Hautverträglichkeit</span><span className="font-display text-lg">4,9 / 5</span></div>
@@ -425,16 +425,16 @@ function Reviews() {
         </div>
 
         {/* Sort bar */}
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-b border-border pb-4">
+        <div className="mt-8 sm:mt-10 flex flex-wrap items-center justify-between gap-3 sm:gap-4 border-b border-border pb-4">
           <div className="text-sm text-muted-foreground">{sorted.length} {sorted.length === 1 ? "Bewertung" : "Bewertungen"}{filter !== null && ` mit ${filter} ★`}</div>
-          <div className="flex items-center gap-2 text-sm">
-            <span className="text-muted-foreground">Sortieren:</span>
-            <div className="flex border border-border">
+          <div className="flex items-center gap-2 text-sm w-full sm:w-auto">
+            <span className="text-muted-foreground hidden sm:inline">Sortieren:</span>
+            <div className="flex border border-border w-full sm:w-auto overflow-x-auto">
               {(Object.keys(sortLabels) as (keyof typeof sortLabels)[]).map(k => (
                 <button
                   key={k}
                   onClick={() => setSort(k)}
-                  className={`px-3 py-1.5 text-xs transition ${sort === k ? "bg-foreground text-background" : "hover:bg-secondary"}`}
+                  className={`px-2.5 sm:px-3 py-1.5 text-[11px] sm:text-xs whitespace-nowrap transition ${sort === k ? "bg-foreground text-background" : "hover:bg-secondary"}`}
                 >
                   {sortLabels[k]}
                 </button>
@@ -446,25 +446,25 @@ function Reviews() {
         {/* Review list */}
         <div className="mt-2 grid md:grid-cols-2 gap-px bg-border">
           {sorted.map(r => (
-            <article key={r.name} className="bg-background p-8 flex flex-col">
-              <header className="flex items-start gap-4">
+            <article key={r.name} className="bg-background p-6 sm:p-8 flex flex-col">
+              <header className="flex items-start gap-3 sm:gap-4">
                 <Avatar initials={r.initials} hue={r.hue} />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-medium">{r.name}</span>
+                    <span className="font-medium text-sm sm:text-base">{r.name}</span>
                     {r.verified && (
                       <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider text-[var(--primary)] bg-[var(--lilac-soft)] px-1.5 py-0.5">
                         <Check className="w-3 h-3" /> Verifiziert
                       </span>
                     )}
                   </div>
-                  <div className="text-xs text-muted-foreground mt-0.5">{r.age} J. · {r.skin} · {new Date(r.date).toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric" })}</div>
+                  <div className="text-[11px] sm:text-xs text-muted-foreground mt-0.5">{r.age} J. · {r.skin} · {new Date(r.date).toLocaleDateString("de-DE", { day: "2-digit", month: "short", year: "numeric" })}</div>
                 </div>
                 <Stars value={r.rating} />
               </header>
-              <h4 className="mt-5 font-display text-xl leading-tight">„{r.title}"</h4>
-              <p className="mt-3 text-foreground/75 leading-relaxed text-sm flex-1">{r.text}</p>
-              <footer className="mt-6 pt-4 border-t border-border flex items-center justify-between text-xs text-muted-foreground">
+              <h4 className="mt-4 sm:mt-5 font-display text-lg sm:text-xl leading-tight">„{r.title}"</h4>
+              <p className="mt-2 sm:mt-3 text-foreground/75 leading-relaxed text-sm flex-1">{r.text}</p>
+              <footer className="mt-5 sm:mt-6 pt-4 border-t border-border flex items-center justify-between text-xs text-muted-foreground">
                 <span>{r.helpful} fanden das hilfreich</span>
                 <button className="hover:text-foreground transition">Hilfreich ↑</button>
               </footer>
