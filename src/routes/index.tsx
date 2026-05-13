@@ -517,16 +517,16 @@ function Faq() {
 
 function Cta() {
   return (
-    <section className="px-6 lg:px-10 pb-10">
+    <section className="px-4 sm:px-6 lg:px-10 pb-10">
       <div className="max-w-[1400px] mx-auto bg-[var(--ink)] text-background relative overflow-hidden">
         <img src={lifestyleGlow} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--ink)] via-[var(--ink)]/85 to-transparent" />
-        <div className="px-8 lg:px-20 py-24 lg:py-32 text-center relative">
-          <div className="text-xs uppercase tracking-[0.2em] text-background/60">— Edition Nº 01</div>
-          <h2 className="mt-6 font-display text-6xl md:text-8xl lg:text-9xl tracking-[-0.04em] leading-[0.9]">
+        <div className="px-6 sm:px-8 lg:px-20 py-20 sm:py-24 lg:py-32 text-center relative">
+          <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-background/60">— Edition Nº 01</div>
+          <h2 className="mt-4 sm:mt-6 font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl tracking-[-0.04em] leading-[0.9]">
             Sag tschüss<br /><em className="text-[var(--lilac)]">zum Pickel.</em>
           </h2>
-          <Button asChild size="lg" className="mt-12 rounded-none h-14 px-10 bg-background text-foreground hover:bg-[var(--lilac)] font-medium tracking-wide">
+          <Button asChild size="lg" className="mt-8 sm:mt-12 rounded-none h-12 sm:h-14 px-8 sm:px-10 bg-background text-foreground hover:bg-[var(--lilac)] font-medium tracking-wide">
             <a href="#produkt">Jetzt bestellen <ArrowUpRight className="w-4 h-4 ml-2" /></a>
           </Button>
         </div>
