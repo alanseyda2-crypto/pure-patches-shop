@@ -184,7 +184,7 @@ function Ritual() {
     <section id="ritual" className="bg-[var(--ink)] text-background">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-2 gap-16 items-center">
         <div className="relative aspect-[4/5] overflow-hidden">
-          <img src={lifestyleSkin} alt="Reine Haut nach Anwendung" className="w-full h-full object-cover" />
+          <img src={lifestyleSkin} alt="Hydrokolloid-Patch Stillleben" className="w-full h-full object-cover" loading="lazy" width={1024} height={1280} />
           <div className="absolute bottom-6 left-6 right-6 flex justify-between text-xs uppercase tracking-[0.2em] text-background/90">
             <span>8mm · 10mm · 12mm</span>
             <span>36 pcs</span>
@@ -220,7 +220,7 @@ function Product() {
   const tiers = [
     { packs: 1, price: 5.0, label: "1 Pack", note: "Probieren", per: 5.0 },
     { packs: 3, price: 10.0, label: "3 Packs", note: "Beliebt · spare 33%", per: 10 / 3, popular: true },
-    { packs: 6, price: 12.5, label: "6 Packs", note: "Bester Preis · spare 58%", per: 12.5 / 6 },
+    { packs: 6, price: 15.0, label: "6 Packs", note: "Bester Preis · spare 50%", per: 15 / 6 },
   ];
   const [tierIdx, setTierIdx] = useState(1);
   const tier = tiers[tierIdx];
