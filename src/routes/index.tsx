@@ -136,12 +136,12 @@ function Marquee() {
 
 function Manifesto() {
   return (
-    <section className="max-w-[1400px] mx-auto px-6 lg:px-10 py-28 lg:py-40 grid lg:grid-cols-12 gap-10">
+    <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-28 lg:py-40 grid lg:grid-cols-12 gap-8 lg:gap-10">
       <div className="lg:col-span-3">
-        <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground sticky top-24">— Manifest</div>
+        <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground sticky top-24">— Manifest</div>
       </div>
       <div className="lg:col-span-9">
-        <p className="font-display text-3xl md:text-5xl lg:text-6xl leading-[1.1] tracking-[-0.02em]">
+        <p className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.15] sm:leading-[1.1] tracking-[-0.02em]">
           Wir glauben, Haut sollte <em className="text-[var(--primary)]">in Ruhe gelassen</em> werden, um zu heilen.<br />
           <span className="text-muted-foreground">Kein Drücken. Kein Aggressives. Nur ein winziger Punkt, der die Arbeit übernimmt — während du schläfst.</span>
         </p>
