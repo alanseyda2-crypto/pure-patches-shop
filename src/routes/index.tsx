@@ -122,10 +122,10 @@ function Hero() {
 function Marquee() {
   const items = [...marqueeItems, ...marqueeItems];
   return (
-    <div className="border-y border-border bg-[var(--lilac-soft)] py-5 overflow-hidden">
-      <div className="flex gap-12 animate-marquee whitespace-nowrap font-display italic text-2xl text-foreground/80">
+    <div className="border-y border-border bg-[var(--lilac-soft)] py-4 sm:py-5 overflow-hidden">
+      <div className="flex gap-8 sm:gap-12 animate-marquee whitespace-nowrap font-display italic text-lg sm:text-2xl text-foreground/80">
         {items.map((t, i) => (
-          <span key={i} className="flex items-center gap-12">
+          <span key={i} className="flex items-center gap-8 sm:gap-12">
             {t} <span className="text-[var(--primary)]">✺</span>
           </span>
         ))}
