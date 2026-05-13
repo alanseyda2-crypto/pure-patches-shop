@@ -43,9 +43,12 @@ function AnnouncementBar() {
   return (
     <a
       href="#produkt"
-      className="block bg-[var(--ink)] text-background py-2.5 text-center text-xs uppercase tracking-[0.18em] hover:bg-[var(--primary)] transition-colors"
+      className="block bg-[var(--ink)] text-background py-2 px-4 text-center text-[10px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-[0.18em] hover:bg-[var(--primary)] transition-colors"
     >
-      Versandkostenfrei in Deutschland <span className="text-[var(--lilac)] mx-2">·</span> 36 Patches pro Pack <span className="text-[var(--lilac)] mx-2">·</span> 3 Größen
+      <span className="inline sm:hidden">Versandkostenfrei DE · 36 Patches · 3 Größen</span>
+      <span className="hidden sm:inline">
+        Versandkostenfrei in Deutschland <span className="text-[var(--lilac)] mx-2">·</span> 36 Patches pro Pack <span className="text-[var(--lilac)] mx-2">·</span> 3 Größen
+      </span>
     </a>
   );
 }
