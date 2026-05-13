@@ -185,30 +185,30 @@ function Science() {
 function Ritual() {
   return (
     <section id="ritual" className="bg-[var(--ink)] text-background">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32 grid lg:grid-cols-2 gap-10 sm:gap-16 items-center">
         <div className="relative aspect-[4/5] overflow-hidden">
           <img src={lifestyleSkin} alt="Hydrokolloid-Patch Stillleben" className="w-full h-full object-cover" loading="lazy" width={1024} height={1280} />
-          <div className="absolute bottom-6 left-6 right-6 flex justify-between text-xs uppercase tracking-[0.2em] text-background/90">
-            <span>8mm · 10mm · 12mm</span>
+          <div className="absolute bottom-4 sm:bottom-6 left-4 right-4 sm:left-6 sm:right-6 flex justify-between text-[10px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] text-background/90">
+            <span>8 · 10 · 12 mm</span>
             <span>36 pcs</span>
           </div>
         </div>
         <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-background/60">— Das Ritual</div>
-          <h2 className="mt-6 font-display text-5xl md:text-6xl tracking-[-0.03em] leading-none">
+          <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-background/60">— Das Ritual</div>
+          <h2 className="mt-4 sm:mt-6 font-display text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-none">
             In drei Schritten<br /><em className="text-[var(--lilac)]">zum Glow.</em>
           </h2>
-          <ol className="mt-12 space-y-8">
+          <ol className="mt-8 sm:mt-12 space-y-6 sm:space-y-8">
             {[
               ["Reinigen", "Gesicht waschen, betroffene Stelle sanft trocken tupfen."],
               ["Aufkleben", "Patch in passender Größe direkt auf den Pickel platzieren."],
               ["Aufwachen", "Nach 8–12 Stunden abnehmen. Patch wird weiß = es hat gewirkt."],
             ].map(([t, d], i) => (
-              <li key={t} className="flex gap-8 border-b border-background/15 pb-8">
-                <span className="font-display text-3xl text-background/40 w-8">{String(i + 1).padStart(2, "0")}</span>
+              <li key={t} className="flex gap-5 sm:gap-8 border-b border-background/15 pb-6 sm:pb-8">
+                <span className="font-display text-2xl sm:text-3xl text-background/40 w-7 sm:w-8 shrink-0">{String(i + 1).padStart(2, "0")}</span>
                 <div>
-                  <h3 className="font-display text-2xl">{t}</h3>
-                  <p className="text-background/70 mt-1">{d}</p>
+                  <h3 className="font-display text-xl sm:text-2xl">{t}</h3>
+                  <p className="text-sm sm:text-base text-background/70 mt-1">{d}</p>
                 </div>
               </li>
             ))}
