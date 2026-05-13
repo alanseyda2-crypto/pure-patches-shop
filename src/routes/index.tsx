@@ -220,7 +220,7 @@ function Product() {
   const tiers = [
     { packs: 1, price: 5.0, label: "1 Pack", note: "Probieren", per: 5.0 },
     { packs: 3, price: 10.0, label: "3 Packs", note: "Beliebt · spare 33%", per: 10 / 3, popular: true },
-    { packs: 6, price: 12.5, label: "6 Packs", note: "Bester Preis · spare 58%", per: 12.5 / 6 },
+    { packs: 6, price: 15.0, label: "6 Packs", note: "Bester Preis · spare 50%", per: 15 / 6 },
   ];
   const [tierIdx, setTierIdx] = useState(1);
   const tier = tiers[tierIdx];
