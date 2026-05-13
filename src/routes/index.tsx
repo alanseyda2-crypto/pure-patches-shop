@@ -491,10 +491,10 @@ function Faq() {
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32 grid lg:grid-cols-12 gap-10">
+    <section id="faq" className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32 grid lg:grid-cols-12 gap-8 lg:gap-10">
       <div className="lg:col-span-4">
-        <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">— FAQ</div>
-        <h2 className="mt-6 font-display text-5xl md:text-6xl tracking-[-0.03em] leading-none">
+        <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground">— FAQ</div>
+        <h2 className="mt-4 sm:mt-6 font-display text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-none">
           Fragen?<br /><em className="text-[var(--primary)]">Antworten.</em>
         </h2>
       </div>
@@ -502,11 +502,11 @@ function Faq() {
         <div className="border-t border-border">
           {items.map(([q, a], i) => (
             <div key={i} className="border-b border-border">
-              <button onClick={() => setOpen(open === i ? null : i)} className="w-full py-6 flex items-center justify-between text-left gap-6">
-                <span className="font-display text-xl md:text-2xl">{q}</span>
+              <button onClick={() => setOpen(open === i ? null : i)} className="w-full py-5 sm:py-6 flex items-center justify-between text-left gap-4 sm:gap-6">
+                <span className="font-display text-lg sm:text-xl md:text-2xl">{q}</span>
                 <span className="shrink-0">{open === i ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}</span>
               </button>
-              {open === i && <p className="pb-8 pr-12 text-muted-foreground leading-relaxed">{a}</p>}
+              {open === i && <p className="pb-6 sm:pb-8 pr-4 sm:pr-12 text-sm sm:text-base text-muted-foreground leading-relaxed">{a}</p>}
             </div>
           ))}
         </div>
