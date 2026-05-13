@@ -158,22 +158,22 @@ function Science() {
   ];
   return (
     <section id="wissenschaft" className="border-t border-border">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
-        <div className="flex items-end justify-between gap-6 mb-16">
-          <h2 className="font-display text-5xl md:text-7xl tracking-[-0.03em] leading-none">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32">
+        <div className="flex items-end justify-between gap-6 mb-10 sm:mb-16">
+          <h2 className="font-display text-4xl sm:text-5xl md:text-7xl tracking-[-0.03em] leading-none">
             Drei Wirkungen.<br /><em className="text-[var(--primary)]">Ein</em> Patch.
           </h2>
           <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground hidden md:block">— Die Wissenschaft</div>
         </div>
         <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border border-y border-border">
           {items.map((it) => (
-            <div key={it.n} className="p-8 lg:p-10">
+            <div key={it.n} className="p-6 sm:p-8 lg:p-10">
               <div className="flex items-center justify-between">
-                <span className="font-display text-5xl text-[var(--primary)]">{it.n}</span>
-                <span className="w-12 h-12 rounded-full border border-border" />
+                <span className="font-display text-4xl sm:text-5xl text-[var(--primary)]">{it.n}</span>
+                <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border" />
               </div>
-              <h3 className="mt-12 font-display text-3xl">{it.title}</h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{it.text}</p>
+              <h3 className="mt-8 sm:mt-12 font-display text-2xl sm:text-3xl">{it.title}</h3>
+              <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">{it.text}</p>
             </div>
           ))}
         </div>
