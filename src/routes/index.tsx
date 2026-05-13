@@ -545,25 +545,25 @@ function Footer() {
   ] as const;
   return (
     <footer className="border-t border-border">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-14 grid md:grid-cols-4 gap-10 text-sm">
-        <div className="md:col-span-2">
-          <div className="font-display font-black text-[25px] tracking-[-0.02em]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-14 grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 text-sm">
+        <div className="col-span-2 md:col-span-2">
+          <div className="font-display font-black text-[22px] sm:text-[25px] tracking-[-0.02em]">
             pure<span className="text-[var(--primary)]">patches</span>
           </div>
-          <div className="mt-6 text-muted-foreground space-y-1">
+          <div className="mt-4 sm:mt-6 text-muted-foreground space-y-1 text-sm">
             <div>Ilmmion Technologies GmbH</div>
             <div>Am Gewerbehof 7–9, 50170 Kerpen</div>
             <div>info@purepatches.de</div>
           </div>
         </div>
         <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Shop</div>
+          <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3 sm:mb-4">Shop</div>
           <ul className="space-y-2">
             <li><a href="/#produkt" className="text-foreground/80 hover:text-[var(--primary)] transition">Shop</a></li>
           </ul>
         </div>
         <div>
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Rechtliches</div>
+          <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3 sm:mb-4">Rechtliches</div>
           <ul className="space-y-2">
             {legal.map(l => (
               <li key={l.to}>
@@ -573,7 +573,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-border py-6 text-center text-xs text-muted-foreground">
+      <div className="border-t border-border py-6 px-4 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} Pure Patches — Alle Rechte vorbehalten
       </div>
     </footer>
