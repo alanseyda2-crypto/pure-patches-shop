@@ -228,68 +228,68 @@ function Product() {
   const [tierIdx, setTierIdx] = useState(1);
   const tier = tiers[tierIdx];
   return (
-    <section id="produkt" className="max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+    <section id="produkt" className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32">
+      <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20">
         <div className="relative">
           <div className="aspect-[4/5] bg-[var(--lilac-soft)] overflow-hidden">
             <img src={packFront} alt="Pure Patches" className="w-full h-full object-cover" />
           </div>
-          <div className="grid grid-cols-2 gap-3 mt-3">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-2 sm:mt-3">
             <img src={patchesSheet} alt="36 Patches in 3 Größen" className="aspect-square object-cover bg-[var(--cream)]" />
             <img src={handPatch} alt="Patch auf der Haut" className="aspect-square object-cover bg-[var(--cream)]" />
           </div>
         </div>
 
         <div className="lg:sticky lg:top-24 lg:self-start">
-          <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Edition Nº 01</div>
-          <h2 className="mt-4 font-display text-6xl md:text-7xl tracking-[-0.03em] leading-none">
+          <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground">Edition Nº 01</div>
+          <h2 className="mt-3 sm:mt-4 font-display text-5xl sm:text-6xl md:text-7xl tracking-[-0.03em] leading-none">
             Pure<br /><em className="text-[var(--primary)]">Patches.</em>
           </h2>
-          <p className="mt-6 text-foreground/70 max-w-md leading-relaxed">
+          <p className="mt-5 sm:mt-6 text-sm sm:text-base text-foreground/70 max-w-md leading-relaxed">
             36 Hydrokolloid-Patches pro Pack in drei Größen. Wähle dein Bundle — je mehr, desto günstiger.
           </p>
 
-          <div className="mt-10 space-y-3">
+          <div className="mt-8 sm:mt-10 space-y-2.5 sm:space-y-3">
             {tiers.map((t, i) => {
               const active = i === tierIdx;
               return (
                 <button
                   key={t.packs}
                   onClick={() => setTierIdx(i)}
-                  className={`w-full flex items-center justify-between px-5 py-4 border text-left transition-colors ${active ? "border-foreground bg-[var(--lilac-soft)]" : "border-border hover:border-foreground/40"}`}
+                  className={`w-full flex items-center justify-between gap-3 px-4 sm:px-5 py-3.5 sm:py-4 border text-left transition-colors ${active ? "border-foreground bg-[var(--lilac-soft)]" : "border-border hover:border-foreground/40"}`}
                 >
-                  <div className="flex items-center gap-4">
-                    <span className={`w-4 h-4 rounded-full border ${active ? "border-foreground bg-foreground" : "border-foreground/40"}`} />
-                    <div>
-                      <div className="font-display text-lg flex items-center gap-2">
+                  <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                    <span className={`w-4 h-4 rounded-full border shrink-0 ${active ? "border-foreground bg-foreground" : "border-foreground/40"}`} />
+                    <div className="min-w-0">
+                      <div className="font-display text-base sm:text-lg flex items-center gap-2 flex-wrap">
                         {t.label}
                         {t.popular && <span className="text-[10px] uppercase tracking-widest bg-foreground text-background px-2 py-0.5">Top</span>}
                       </div>
-                      <div className="text-xs text-muted-foreground">{t.note}</div>
+                      <div className="text-[11px] sm:text-xs text-muted-foreground">{t.note}</div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="font-display text-xl">{t.price.toFixed(2).replace(".", ",")} €</div>
-                    <div className="text-xs text-muted-foreground">{t.per.toFixed(2).replace(".", ",")} € / Pack</div>
+                  <div className="text-right shrink-0">
+                    <div className="font-display text-lg sm:text-xl">{t.price.toFixed(2).replace(".", ",")} €</div>
+                    <div className="text-[11px] sm:text-xs text-muted-foreground">{t.per.toFixed(2).replace(".", ",")} € / Pack</div>
                   </div>
                 </button>
               );
             })}
           </div>
 
-          <ul className="mt-8 space-y-3 text-sm">
+          <ul className="mt-6 sm:mt-8 space-y-2.5 sm:space-y-3 text-sm">
             {[
               "12× 8 mm · 12× 10 mm · 12× 12 mm pro Pack",
               "Vegan & dermatologisch getestet",
               "Unsichtbar — auch tagsüber tragbar",
               "Versandkostenfrei in Deutschland",
             ].map(t => (
-              <li key={t} className="flex gap-3 items-center"><Check className="w-4 h-4 text-[var(--primary)]" />{t}</li>
+              <li key={t} className="flex gap-3 items-center"><Check className="w-4 h-4 text-[var(--primary)] shrink-0" />{t}</li>
             ))}
           </ul>
 
-          <div className="mt-10">
-            <Button size="lg" className="w-full rounded-none h-14 bg-foreground text-background hover:bg-[var(--primary)] font-medium tracking-wide">
+          <div className="mt-8 sm:mt-10">
+            <Button size="lg" className="w-full rounded-none h-12 sm:h-14 bg-foreground text-background hover:bg-[var(--primary)] font-medium tracking-wide text-sm sm:text-base">
               In den Warenkorb · {tier.price.toFixed(2).replace(".", ",")} €
             </Button>
           </div>
