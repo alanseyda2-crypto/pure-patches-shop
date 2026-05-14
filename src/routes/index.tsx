@@ -204,12 +204,14 @@ function Ritual() {
           </h2>
           <ol className="mt-8 sm:mt-12 space-y-6 sm:space-y-8">
             {[
-              ["Reinigen", "Gesicht waschen, betroffene Stelle sanft trocken tupfen."],
-              ["Aufkleben", "Patch in passender Größe direkt auf den Pickel platzieren."],
-              ["Aufwachen", "Nach 8–12 Stunden abnehmen. Patch wird weiß = es hat gewirkt."],
-            ].map(([t, d], i) => (
+              { t: "Reinigen", d: "Gesicht waschen, betroffene Stelle sanft trocken tupfen.", Icon: Droplets },
+              { t: "Aufkleben", d: "Patch in passender Größe direkt auf den Pickel platzieren.", Icon: Hand },
+              { t: "Aufwachen", d: "Nach 8–12 Stunden abnehmen. Patch wird weiß = es hat gewirkt.", Icon: Sunrise },
+            ].map(({ t, d, Icon }) => (
               <li key={t} className="flex gap-5 sm:gap-8 border-b border-background/15 pb-6 sm:pb-8">
-                <span className="font-display text-2xl sm:text-3xl text-background/40 w-7 sm:w-8 shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                <span className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-full border border-background/30 flex items-center justify-center text-[var(--lilac)]">
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
+                </span>
                 <div>
                   <h3 className="font-display text-xl sm:text-2xl">{t}</h3>
                   <p className="text-sm sm:text-base text-background/70 mt-1">{d}</p>
