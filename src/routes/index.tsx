@@ -23,8 +23,10 @@ const marqueeItems = ["Hydrokolloid", "Vegan", "Dermatologisch entwickelt", "Mad
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-[var(--lilac)] selection:text-[var(--ink)]">
-      <AnnouncementBar />
-      <Nav />
+      <div className="sticky top-0 z-50">
+        <AnnouncementBar />
+        <Nav />
+      </div>
       <Hero />
       <Marquee />
       <Manifesto />
