@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowUpRight, Check, Plus, Minus, ShoppingBag } from "lucide-react";
+import { ArrowUpRight, Check, Plus, Minus, ShoppingBag, Droplet, Shield, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import packFront from "@/assets/pack-front.png";
 import patchesSheet from "@/assets/patches-sheet.png";
@@ -152,9 +152,9 @@ function Manifesto() {
 
 function Science() {
   const items = [
-    { n: "01", title: "Absorbiert", text: "Hydrokolloid zieht Sekret und Talg gezielt aus der Pore — sichtbar weiß am Morgen." },
-    { n: "02", title: "Schützt", text: "Eine unsichtbare Barriere gegen Berührung, Bakterien und Make-up." },
-    { n: "03", title: "Heilt", text: "Feuchtes Mikroklima beschleunigt die Regeneration und beugt Narben vor." },
+    { n: "01", title: "Absorbiert", text: "Hydrokolloid zieht Sekret und Talg gezielt aus der Pore — sichtbar weiß am Morgen.", Icon: Droplet },
+    { n: "02", title: "Schützt", text: "Eine unsichtbare Barriere gegen Berührung, Bakterien und Make-up.", Icon: Shield },
+    { n: "03", title: "Heilt", text: "Feuchtes Mikroklima beschleunigt die Regeneration und beugt Narben vor.", Icon: Sparkles },
   ];
   return (
     <section id="wissenschaft" className="border-t border-border">
@@ -170,7 +170,9 @@ function Science() {
             <div key={it.n} className="p-6 sm:p-8 lg:p-10">
               <div className="flex items-center justify-between">
                 <span className="font-display text-4xl sm:text-5xl text-[var(--primary)]">{it.n}</span>
-                <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border" />
+                <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border flex items-center justify-center text-[var(--primary)]">
+                  <it.Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
+                </span>
               </div>
               <h3 className="mt-8 sm:mt-12 font-display text-2xl sm:text-3xl">{it.title}</h3>
               <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">{it.text}</p>
