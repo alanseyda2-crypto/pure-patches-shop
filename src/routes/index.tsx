@@ -142,15 +142,48 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right image collage */}
+        {/* Right: pack-burst animation */}
         <div className="md:col-span-5 relative h-[460px] sm:h-[520px] md:h-[480px] lg:h-[640px] order-first md:order-none">
-          <div className="absolute right-0 top-0 w-[78%] h-[80%] overflow-hidden bg-[var(--lilac-soft)] animate-float flex items-center justify-center" style={{ ["--r" as any]: "2deg" }}>
-            <img src={packFront} alt="Pure Patches Verpackung" className="w-full h-full object-contain p-4" loading="eager" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            {/* Glow burst */}
+            <div className="absolute w-[60%] aspect-square rounded-full bg-[var(--lilac)] blur-3xl animate-pack-glow" />
+
+            {/* Particles flying out */}
+            {[
+              { tx: "120px", ty: "-90px", d: "0s", c: "var(--primary)" },
+              { tx: "-110px", ty: "-100px", d: "0.05s", c: "var(--lilac)" },
+              { tx: "140px", ty: "60px", d: "0.1s", c: "var(--lilac)" },
+              { tx: "-130px", ty: "80px", d: "0.05s", c: "var(--primary)" },
+              { tx: "0px", ty: "-140px", d: "0.1s", c: "var(--primary)" },
+              { tx: "-160px", ty: "-20px", d: "0s", c: "var(--lilac)" },
+              { tx: "170px", ty: "0px", d: "0.05s", c: "var(--primary)" },
+              { tx: "60px", ty: "130px", d: "0.1s", c: "var(--lilac)" },
+              { tx: "-70px", ty: "140px", d: "0s", c: "var(--primary)" },
+            ].map((p, i) => (
+              <span
+                key={i}
+                className="absolute w-2.5 h-2.5 rounded-full animate-burst-particle"
+                style={{
+                  background: p.c,
+                  ["--tx" as any]: p.tx,
+                  ["--ty" as any]: p.ty,
+                  animationDelay: p.d,
+                }}
+              />
+            ))}
+
+            {/* Patches sheet — revealed when pack bursts */}
+            <div className="absolute w-[62%] aspect-square overflow-hidden bg-[var(--cream)] shadow-[var(--shadow-soft)] animate-sheet-reveal">
+              <img src={patchesSheet} alt="36 Patches in 3 Größen" className="w-full h-full object-cover" />
+            </div>
+
+            {/* Pack — bursts open */}
+            <div className="absolute w-[72%] aspect-[4/5] overflow-hidden bg-[var(--lilac-soft)] animate-pack-burst flex items-center justify-center">
+              <img src={packFront} alt="Pure Patches Verpackung" className="w-full h-full object-contain p-3" loading="eager" />
+            </div>
           </div>
-          <div className="absolute left-0 bottom-0 w-[55%] h-[45%] overflow-hidden bg-[var(--cream)] animate-float" style={{ animationDelay: "1s", ["--r" as any]: "-3deg" }}>
-            <img src={patchesSheet} alt="Patches" className="w-full h-full object-cover" />
-          </div>
-          <div className="absolute -left-2 top-4 font-display italic text-sm text-muted-foreground rotate-[-8deg] hidden lg:block">
+
+          <div className="absolute -left-2 top-4 font-display italic text-sm text-muted-foreground rotate-[-8deg] hidden lg:block z-10">
             ↗ 36 Patches · 3 Größen
           </div>
         </div>
