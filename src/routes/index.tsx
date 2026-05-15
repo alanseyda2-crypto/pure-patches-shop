@@ -120,21 +120,21 @@ function Nav() {
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-10 sm:pt-12 lg:pt-20 pb-16 sm:pb-24 lg:pb-32 grid lg:grid-cols-12 gap-10 items-end relative">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-8 sm:pt-12 lg:pt-20 pb-14 sm:pb-20 lg:pb-32 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 lg:gap-10 items-end relative">
         {/* Left text */}
-        <div className="lg:col-span-7 relative z-10">
+        <div className="md:col-span-7 relative z-10">
           <div className="flex items-center gap-3 text-[10px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] text-muted-foreground">
             <span className="w-6 sm:w-8 h-px bg-foreground/40" /> Edition Nº 01 — Hydrokolloid
           </div>
-          <h1 className="mt-6 sm:mt-8 font-display font-light text-[18vw] sm:text-[14vw] lg:text-[10rem] leading-[0.85] tracking-[-0.04em]">
+          <h1 className="mt-5 sm:mt-8 font-display font-light text-[5rem] sm:text-[7rem] md:text-[8rem] lg:text-[10rem] leading-[0.85] tracking-[-0.04em]">
             Reine<br />
             <span className="italic font-normal text-[var(--primary)]">Haut,</span><br />
             <span className="text-muted-foreground">kein Stress.</span>
           </h1>
-          <p className="mt-6 sm:mt-10 max-w-md text-sm sm:text-base lg:text-lg text-foreground/70 leading-relaxed">
+          <p className="mt-5 sm:mt-10 max-w-md text-sm sm:text-base lg:text-lg text-foreground/70 leading-relaxed">
             Über Nacht. Ohne Drücken. Pure Patches sind unsichtbare Hydrokolloid-Punkte, die Unreinheiten aufnehmen und deine Haut in Ruhe heilen lassen.
           </p>
-          <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <div className="mt-6 sm:mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
             <Button asChild size="lg" className="rounded-none h-12 sm:h-14 px-6 sm:px-8 bg-foreground text-background hover:bg-[var(--primary)] font-medium tracking-wide text-sm sm:text-base">
               <a href="#produkt">Jetzt bestellen — ab 5,00 €</a>
             </Button>
@@ -143,9 +143,9 @@ function Hero() {
         </div>
 
         {/* Right image collage */}
-        <div className="lg:col-span-5 relative h-[320px] sm:h-[420px] lg:h-[640px]">
-          <div className="absolute right-0 top-0 w-[75%] sm:w-[78%] h-[80%] overflow-hidden bg-[var(--lilac-soft)] animate-float" style={{ ["--r" as any]: "2deg" }}>
-            <img src={packFront} alt="Pure Patches Verpackung" className="w-full h-full object-cover" />
+        <div className="md:col-span-5 relative h-[460px] sm:h-[520px] md:h-[480px] lg:h-[640px] order-first md:order-none">
+          <div className="absolute right-0 top-0 w-[78%] h-[80%] overflow-hidden bg-[var(--lilac-soft)] animate-float flex items-center justify-center" style={{ ["--r" as any]: "2deg" }}>
+            <img src={packFront} alt="Pure Patches Verpackung" className="w-full h-full object-contain p-4" loading="eager" />
           </div>
           <div className="absolute left-0 bottom-0 w-[55%] h-[45%] overflow-hidden bg-[var(--cream)] animate-float" style={{ animationDelay: "1s", ["--r" as any]: "-3deg" }}>
             <img src={patchesSheet} alt="Patches" className="w-full h-full object-cover" />
