@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowUpRight, Check, Plus, Minus, ShoppingBag, Droplet, Shield, Sparkles, Droplets, Hand, Sunrise } from "lucide-react";
+import { ArrowUpRight, Check, Plus, Minus, ShoppingBag, Droplet, Shield, Sparkles, Droplets, Hand, Sunrise, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet";
 import packFront from "@/assets/pack-front.png";
 import patchesSheet from "@/assets/patches-sheet.png";
 import lifestyleSkin from "@/assets/lifestyle-skin.png";
