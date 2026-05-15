@@ -57,19 +57,61 @@ function AnnouncementBar() {
 }
 
 function Nav() {
+  const [open, setOpen] = useState(false);
+  const links = [
+    { href: "#wissenschaft", label: "Wissenschaft" },
+    { href: "#ritual", label: "Ritual" },
+    { href: "#produkt", label: "Produkt" },
+    { href: "#faq", label: "FAQ" },
+  ];
   return (
     <header className="backdrop-blur-xl bg-background/80 border-b border-border/60">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 h-14 sm:h-16 flex items-center justify-between">
         <a href="#top" className="font-display font-black text-[20px] sm:text-[25px] tracking-[-0.02em] leading-none">
           pure<span className="text-[var(--primary)]">patches</span>
         </a>
-        <a
-          href="#produkt"
-          aria-label="Zum Warenkorb"
-          className="relative inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-border hover:bg-[var(--lilac-soft)] hover:border-[var(--primary)] transition"
-        >
-          <ShoppingBag className="w-5 h-5" />
-        </a>
+        <nav className="hidden md:flex items-center gap-8 text-sm">
+          {links.map(l => (
+            <a key={l.href} href={l.href} className="text-foreground/70 hover:text-[var(--primary)] transition uppercase tracking-[0.14em] text-xs">{l.label}</a>
+          ))}
+        </nav>
+        <div className="flex items-center gap-2">
+          <a
+            href="#produkt"
+            aria-label="Zum Warenkorb"
+            className="relative inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-border hover:bg-[var(--lilac-soft)] hover:border-[var(--primary)] transition"
+          >
+            <ShoppingBag className="w-5 h-5" />
+          </a>
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <button
+                aria-label="Menü öffnen"
+                className="inline-flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-border hover:bg-[var(--lilac-soft)] hover:border-[var(--primary)] transition"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[85%] sm:max-w-sm bg-background">
+              <SheetTitle className="font-display text-2xl tracking-[-0.02em] mb-8">
+                pure<span className="text-[var(--primary)]">patches</span>
+              </SheetTitle>
+              <nav className="flex flex-col gap-1">
+                {links.map(l => (
+                  <SheetClose key={l.href} asChild>
+                    <a
+                      href={l.href}
+                      className="font-display text-2xl py-3 border-b border-border hover:text-[var(--primary)] transition"
+                    >
+                      {l.label}
+                    </a>
+                  </SheetClose>
+                ))}
+              </nav>
+              <div className="mt-10 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Versandkostenfrei DE</div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
