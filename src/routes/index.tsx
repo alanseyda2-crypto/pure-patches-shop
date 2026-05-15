@@ -181,11 +181,11 @@ function Marquee() {
 
 function Manifesto() {
   return (
-    <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-28 lg:py-40 grid lg:grid-cols-12 gap-8 lg:gap-10">
-      <div className="lg:col-span-3">
+    <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-28 lg:py-40 grid md:grid-cols-12 gap-8 lg:gap-10">
+      <div className="md:col-span-3">
         <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground sticky top-24">— Manifest</div>
       </div>
-      <div className="lg:col-span-9">
+      <div className="md:col-span-9">
         <p className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1.15] sm:leading-[1.1] tracking-[-0.02em]">
           Wir glauben, Haut sollte <em className="text-[var(--primary)]">in Ruhe gelassen</em> werden, um zu heilen.<br />
           <span className="text-muted-foreground">Kein Drücken. Kein Aggressives. Nur ein winziger Punkt, der die Arbeit übernimmt — während du schläfst.</span>
@@ -232,7 +232,7 @@ function Science() {
 function Ritual() {
   return (
     <section id="ritual" className="bg-[var(--ink)] text-background">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32 grid lg:grid-cols-2 gap-10 sm:gap-16 items-center">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32 grid md:grid-cols-2 gap-10 sm:gap-16 items-center">
         <div className="relative aspect-[4/5] overflow-hidden">
           <img src={lifestyleSkin} alt="Hydrokolloid-Patch Stillleben" className="w-full h-full object-cover" loading="lazy" width={1024} height={1280} />
           <div className="absolute bottom-4 sm:bottom-6 left-4 right-4 sm:left-6 sm:right-6 flex justify-between text-[10px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] text-background/90">
@@ -278,7 +278,7 @@ function Product() {
   const tier = tiers[tierIdx];
   return (
     <section id="produkt" className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32">
-      <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20">
+      <div className="grid md:grid-cols-2 gap-10 sm:gap-12 lg:gap-20">
         <div className="relative">
           <div className="aspect-[4/5] bg-[var(--lilac-soft)] overflow-hidden">
             <img src={packFront} alt="Pure Patches" className="w-full h-full object-cover" />
@@ -289,7 +289,7 @@ function Product() {
           </div>
         </div>
 
-        <div className="lg:sticky lg:top-24 lg:self-start">
+        <div className="md:sticky md:top-32 md:self-start">
           <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground">Edition Nº 01</div>
           <h2 className="mt-3 sm:mt-4 font-display text-5xl sm:text-6xl md:text-7xl tracking-[-0.03em] leading-none">
             Pure<br /><em className="text-[var(--primary)]">Patches.</em>
@@ -540,14 +540,14 @@ function Faq() {
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32 grid lg:grid-cols-12 gap-8 lg:gap-10">
-      <div className="lg:col-span-4">
+    <section id="faq" className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-20 sm:py-24 lg:py-32 grid md:grid-cols-12 gap-8 lg:gap-10">
+      <div className="md:col-span-4">
         <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground">— FAQ</div>
         <h2 className="mt-4 sm:mt-6 font-display text-4xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-none">
           Fragen?<br /><em className="text-[var(--primary)]">Antworten.</em>
         </h2>
       </div>
-      <div className="lg:col-span-8">
+      <div className="md:col-span-8">
         <div className="border-t border-border">
           {items.map(([q, a], i) => (
             <div key={i} className="border-b border-border">
