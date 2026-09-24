@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "sdk_version": "3.0.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "pure-patches-shop",
+      "version": "0.1.0",
+      "title": "Pure Patches Shop"
+    },
+    "tools": [
+      {
+        "name": "get_product",
+        "title": "Produktinfos abrufen",
+        "description": "Liefert alle Informationen zum Pure Patches Hydrokolloid-Pickelpatch: Inhalt, Größen, Eigenschaften und Wirkung.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_pricing",
+        "title": "Preise & Bundles abrufen",
+        "description": "Liefert die aktuellen Preise und Bundle-Angebote für Pure Patches (1, 3 und 6 Packs).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_faq",
+        "title": "FAQ abrufen",
+        "description": "Liefert die häufigsten Fragen und Antworten zu Pure Patches (Tragedauer, Wirkung, Make-up, Hautverträglichkeit, Lieferung).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_shipping",
+        "title": "Versand & Zahlung abrufen",
+        "description": "Liefert Versand- und Zahlungsinformationen für Pure Patches (Versandkosten, Lieferzeit, Zahlarten, Widerruf).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_company",
+        "title": "Firmeninfos & Kontakt abrufen",
+        "description": "Liefert Impressums- und Kontaktdaten des Anbieters Pure Patches (Ilmmion Technologies GmbH).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
