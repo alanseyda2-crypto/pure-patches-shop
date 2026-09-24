@@ -11,10 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WiderrufRouteImport } from './routes/widerruf'
 import { Route as VersandRouteImport } from './routes/versand'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as AgbRouteImport } from './routes/agb'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 
 const WiderrufRoute = WiderrufRouteImport.update({
   id: '/widerruf',
@@ -24,6 +26,11 @@ const WiderrufRoute = WiderrufRouteImport.update({
 const VersandRoute = VersandRouteImport.update({
   id: '/versand',
   path: '/versand',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpressumRoute = ImpressumRouteImport.update({
@@ -46,22 +53,32 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
+  '/mcp': typeof McpRoute
   '/versand': typeof VersandRoute
   '/widerruf': typeof WiderrufRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agb': typeof AgbRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
+  '/mcp': typeof McpRoute
   '/versand': typeof VersandRoute
   '/widerruf': typeof WiderrufRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,8 +86,10 @@ export interface FileRoutesById {
   '/agb': typeof AgbRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
+  '/mcp': typeof McpRoute
   '/versand': typeof VersandRoute
   '/widerruf': typeof WiderrufRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -79,18 +98,30 @@ export interface FileRouteTypes {
     | '/agb'
     | '/datenschutz'
     | '/impressum'
+    | '/mcp'
     | '/versand'
     | '/widerruf'
+    | '/.well-known/oauth-protected-resource'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/agb' | '/datenschutz' | '/impressum' | '/versand' | '/widerruf'
+  to:
+    | '/'
+    | '/agb'
+    | '/datenschutz'
+    | '/impressum'
+    | '/mcp'
+    | '/versand'
+    | '/widerruf'
+    | '/.well-known/oauth-protected-resource'
   id:
     | '__root__'
     | '/'
     | '/agb'
     | '/datenschutz'
     | '/impressum'
+    | '/mcp'
     | '/versand'
     | '/widerruf'
+    | '/.well-known/oauth-protected-resource'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -98,8 +129,10 @@ export interface RootRouteChildren {
   AgbRoute: typeof AgbRoute
   DatenschutzRoute: typeof DatenschutzRoute
   ImpressumRoute: typeof ImpressumRoute
+  McpRoute: typeof McpRoute
   VersandRoute: typeof VersandRoute
   WiderrufRoute: typeof WiderrufRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +149,13 @@ declare module '@tanstack/react-router' {
       path: '/versand'
       fullPath: '/versand'
       preLoaderRoute: typeof VersandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impressum': {
@@ -146,6 +186,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -154,8 +201,11 @@ const rootRouteChildren: RootRouteChildren = {
   AgbRoute: AgbRoute,
   DatenschutzRoute: DatenschutzRoute,
   ImpressumRoute: ImpressumRoute,
+  McpRoute: McpRoute,
   VersandRoute: VersandRoute,
   WiderrufRoute: WiderrufRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
